@@ -7,18 +7,22 @@ services:
       - POSTGRES_DB=zosia
       - POSTGRES_USER=zosia
       - POSTGRES_PASSWORD=zosia
+      
   web:
     build:
       context: ./app
-      dockerfile: DockerfileDev
+      dockerfile: dev.Dockerfile
     image: zosia_dev
-    command: /bin/bash
-    stdin_open: true
-    tty: true
+    command: >
+      bash -c "python3 manage.py collectstatic --no-input
+      && python3 manage.py migrate
+      && uwsgi --ini /app/uwsgi.dev.ini"
+    # stdin_open: true
+    # tty: true
     volumes:
       - ./app:/app
     ports:
-      - "0.0.0.0:8000:8000"
+      - "8000:8000"
     depends_on:
       - db
     links:
