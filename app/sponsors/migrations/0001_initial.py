@@ -20,9 +20,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200, unique=True, verbose_name='Name')),
                 ('is_active', models.BooleanField(default=False, verbose_name='Active')),
                 ('url', models.URLField(blank=True, null=True, verbose_name='URL')),
-                # ('logo', models.ImageField(upload_to='sponsors', verbose_name='Logo')),
-                ('path_to_logo', models.CharField(max_length=300, unique=True, verbose_name='Path to logo')),
-
+                ('logo', models.ImageField(upload_to='sponsors', verbose_name='Logo'))
             ],
         ),
     ]
