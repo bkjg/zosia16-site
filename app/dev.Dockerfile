@@ -18,19 +18,19 @@ ENV NODE_PATH=/node_modules
 ENV DJANGO_ENV=${DJANGO_ENV}
 ENV DJANGO_SETTINGS_MODULE="zosia16.settings.${DJANGO_ENV}"
 
-WORKDIR /code
+WORKDIR /app
 
-ADD requirements.txt /code/
+ADD requirements.txt /app/
 RUN pip install -r requirements.txt
 
-ADD package.json /code/
-ADD Makefile /code/
-ADD webpack.config.js /code/
-ADD static /code/static
+ADD package.json /app/
+ADD Makefile /app/
+ADD webpack.config.js /app/
+ADD static /app/static
 RUN yarn install
 RUN yarn build
-RUN cp -R /code/node_modules /node_modules
+RUN cp -R /app/node_modules /node_modules
 
-ADD . /code/
+ADD . /app/
 
 EXPOSE 8000

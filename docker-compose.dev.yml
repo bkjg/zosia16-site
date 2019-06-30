@@ -17,10 +17,8 @@ services:
       bash -c "python3 manage.py collectstatic --no-input
       && python3 manage.py migrate
       && uwsgi --ini /app/uwsgi.dev.ini"
-    # stdin_open: true
-    # tty: true
-    volumes:
-      - ./app:/app
+    # volumes:
+    #   - ./app:/app
     ports:
       - "8000:8000"
     depends_on:
