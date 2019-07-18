@@ -12,15 +12,14 @@ RUN yarn build
 # Main image
 FROM python:3.6-buster
 
-# Uncomment if you need to install any additional package
-# RUN set -x \
-# 	&& apt-get update \
-#     && apt-get install --no-install-recommends --no-install-suggests -y ??? \
-#     && apt-get autoremove -y \
-#     && rm -rf /var/lib/apt/lists/* \
-#     && rm -rf /root/.cache* \
-#     && rm -rf /tmp/* \
-# ;
+RUN set -x \
+	&& apt-get update \
+    && apt-get install --no-install-recommends --no-install-suggests -y gettext \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /root/.cache* \
+    && rm -rf /tmp/* \
+;
 
 ARG DJANGO_ENV=dev
 ENV PYTHONUNBUFFERED 1
