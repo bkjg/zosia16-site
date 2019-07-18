@@ -90,6 +90,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'zosia16.urls'
@@ -167,6 +168,12 @@ USE_TZ = True
 
 DATE_FORMAT = 'd.n.o'
 
+
+# Languages available
+LANGUAGES = (
+    ('en', 'English'),
+    ('pl', 'Polski'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
